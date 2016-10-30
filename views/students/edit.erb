@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="col-md-12">
+    <h2>Edit student details</h2>
+  </div>
+  <div class="col-md-3">
+    <form action="/students/<%= @student['id'] %>" method="post">
+      <input type="hidden" name="_method" value="put">
+      <div class="form-group">
+        <input type="text" class="form-control" name="name" placeholder="<%= @student['name'] %>" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="campus" placeholder="<%= @student['campus'] %>" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="age" placeholder="<%= @student['age'] %>" required>
+      </div>
+      <!-- Submit student -->
+      <button type="submit" class="btn btn-default">Update student</button>
+    </form>
+  </div>
+</div>
