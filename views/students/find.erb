@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="col-md-12">
+    <h2>Search for a student</h2>
+  </div>
+
+  <div class="col-md-6">
+    <form action="/students" method="post">
+      <div class="form-group">
+        <input type="text" class="form-control" name="name" placeholder="Name" required>
+      </div>
+      <!-- Submit student -->
+      <button type="submit" class="btn btn-default">Search</button>
+      <% if @error %>
+        <span class="text-danger"><%= @error %></span>
+      <% end %>
+    </form>
+  </div>
+
+</div>

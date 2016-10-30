@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="col-md-12">
+    <h2>Student Details</h2>
+    <p><b>Name:</b> <%= @student["name"] %></p>
+    <p><b>Age:</b> <%= @student["age"] %></p>
+    <p><b>Campus:</b> <%= @student["campus"] %> </p>
+  </div>
+  <div class="col-md-12">
+    <form action="/students/<%= @student['id'] %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button class="btn btn-warning" type="submit">Edit</button>
+      <button class="btn btn-danger" type="submit">Delete</button>
+    </form>
+  </div>
+</div>
