@@ -19,7 +19,7 @@ get "/students/new" do
   erb :"students/new"
 end
 
-post "/students/new" do
+post "/students" do
   @student = db.execute("insert into students (name, campus, age) values (?, ?, ?)", params[:name], params[:campus], params[:age])
   redirect "/"
 end
@@ -29,7 +29,7 @@ get "/students/find" do
   erb :"students/find"
 end
 
-post "/students" do
+post "/students/find" do
   @student_id = db.execute("select id from students where name = ? limit 1", params[:name])
 
   if @student_id != []
@@ -47,6 +47,18 @@ end
 delete "/students/:id" do
   @student = db.execute("delete from students where id = ?", params["id"])
   redirect "/"
+end
+
+# Edit a student
+get "/students/:id/edit" do
+  @student =  db.execute("select * from students where id = ?", params["id"])
+  @student = @student.first
+  erb :"students/edit"
+end
+
+put "/students/:id" do
+  db.execute("update students set name = ?, campus = ?, age = ? where id = ?", params["name"], params["campus"], params["age"], params["id"])
+  redirect "/students/#{params['id']}"
 end
 
 # Select a specific student and show details
